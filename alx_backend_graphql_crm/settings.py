@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Local apps
+    'crm',
+    
+    # Third party tools
+    'graphene_django',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +126,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# --- Graphene config ---
+GRAPHENE = {
+    # path to the schema object you'll define below
+    "SCHEMA": "alx_backend_graphql_crm.schema.schema",
+}
