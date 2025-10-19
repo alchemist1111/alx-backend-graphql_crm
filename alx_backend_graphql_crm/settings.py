@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'crm',
     
     # Third party tools
-    'graphene-django',
+    'graphene_django',
     'django_filters',
 ]
 
