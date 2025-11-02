@@ -5,8 +5,8 @@ from gql.transport.requests import RequestsHTTPTransport
 import logging
 
 # Set up logging
-# logging.basicConfig(filename='/tmp/crm_report_log.txt', level=logging.INFO)
-logging.basicConfig(filename='logs/crm_report_log.txt', level=logging.INFO)
+logging.basicConfig(filename='/tmp/crm_report_log.txt', level=logging.INFO)
+# logging.basicConfig(filename='logs/crm_report_log.txt', level=logging.INFO)
 
 @shared_task
 def generate_crm_report():
