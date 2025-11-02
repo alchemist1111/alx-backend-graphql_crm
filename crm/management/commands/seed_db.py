@@ -12,11 +12,11 @@ class Command(BaseCommand):
         fake = faker.Faker()
 
 
-        # Create 6,000 products
+        # Create 1,000,000 products
         products = []
-        for i in range(6000):
+        for i in range(1000000):
             name = f"Product {i+1}"
-            price = round(random.uniform(10, 200000), 2)
+            price = round(random.uniform(10, 2000000), 2)
             stock = random.randint(1, 100)
             
             product = Product(
@@ -31,10 +31,10 @@ class Command(BaseCommand):
         Product.objects.bulk_create(products)    
 
 
-        # Create 1,000
+        # Create 100,000
         customers = []
         existing_emails = set()
-        for i in range(1000):
+        for i in range(100000):
             name = fake.name()
             # Create custom email format: first_name.last_name@example.com
             first_name, last_name = name.split(' ', 1) # Split the first_name and last_name
@@ -61,4 +61,4 @@ class Command(BaseCommand):
         # Create bulk customers
         Customer.objects.bulk_create(customers)  
         
-        self.stdout.write(self.style.SUCCESS("Successfully created 6,000 products and 1,000 customers."))
+        self.stdout.write(self.style.SUCCESS("Successfully created 1,000,000,000 products and 1,000,000 customers."))
