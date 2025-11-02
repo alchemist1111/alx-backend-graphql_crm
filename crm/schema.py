@@ -1,4 +1,5 @@
 import graphene
+from graphql_jwt.decorators import login_required
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 from django.db import transaction
@@ -232,6 +233,34 @@ class CreateProduct(graphene.Mutation):
                 message=f"Error creating product: {str(e)}"
             )
 
+# Update Low Stock Mutation
+class UpdateLowStockProducts(graphene.Mutation):
+    success_message = graphene.String()
+    updated_products = graphene.List(graphene.String)
+
+    class Arguments:
+        # No arguments are needed for this mutation; it operates on the stock condition
+        pass
+
+    @login_required
+    def mutate(self, info):
+        # Query products where stock < 10
+        low_stock_products = Product.objects.filter(stock__lt=10)
+        
+        # Create an empty list to store updated product names
+        updated_product_names = []
+
+        # Increment the stock of each low-stock product by 10
+        for product in low_stock_products:
+            product.stock += 10
+            product.save()
+            updated_product_names.append(product.name)
+
+        return UpdateLowStockProducts(
+            success_message="Successfully restocked products.",
+            updated_products=updated_product_names
+        )             
+
 
 # CreateOrder Mutation
 class CreateOrder(graphene.Mutation):
@@ -309,6 +338,7 @@ class Mutation(graphene.ObjectType):
     bulk_create_customers = BulkCreateCustomers.Field()
     create_product = CreateProduct.Field()
     create_order = CreateOrder.Field()
+    low_stock_update = UpdateLowStockProducts.Field()
 
 
 # Define Query class with filtering support
