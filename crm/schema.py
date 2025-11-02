@@ -6,6 +6,7 @@ from django.db import transaction
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from decimal import Decimal
+from crm.models import Product
 import re
 from .models import Customer, Product, Order
 from .filters import CustomerFilter, ProductFilter, OrderFilter
