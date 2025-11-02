@@ -26,3 +26,5 @@ EOF
 
 # Log the number of deleted customers with a timestamp
 echo "$timestamp - Deleted $deleted_count inactive customers." >> /tmp/customer_cleanup_log.txt
+
+print("Cleanup complete. Check /tmp/customer_cleanup_log.txt for details.")
