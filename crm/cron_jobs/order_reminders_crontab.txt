@@ -1,0 +1,1 @@
+0 8 * * * G:\ALX\ProDev Backend Development\Projects\Graph-QL\crm\cron_jobs/send_order_reminders.py
