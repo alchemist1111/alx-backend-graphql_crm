@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Navigate to the Django project directory
-cd /path/to/your/django/project
+cd G:\ALX\ProDev Backend Development\Projects\Graph-QL
 
 # Get the current timestamp
 timestamp=$(date "+%Y-%m-%d %H:%M:%S")
